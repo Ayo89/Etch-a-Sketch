@@ -8,7 +8,6 @@ body {
     width: 100vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
 }
@@ -20,6 +19,26 @@ body input {
     display: flex;
     flex-wrap: wrap;
     width: fit-content;
+    margin: 4rem;
+}
+
+body form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 14rem;
+}
+
+body input {
+    padding: 24px;
+    font-size: 16px;
+}
+
+body button {
+    padding: 1.4rem;
+    border-radius: 0.4rem;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .box {

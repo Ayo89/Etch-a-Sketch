@@ -12,7 +12,6 @@ let button = document.createElement("button");
 button.textContent = "CREATE";
 
 let functionCreateBox = (numberBox) => {
-
   for (let i = 0; i < numberBox; i++) {
     for (let y = 0; y < numberBox; y++) {
       let box = document.createElement("div");
@@ -22,8 +21,8 @@ let functionCreateBox = (numberBox) => {
       box.addEventListener("mouseout", () => {
         box.style.backgroundColor = "white";
       });
-      box.style.width = (boxWidth - 2.5) + "px";
-      box.style.height = (boxHeight - 2.5) + "px";
+      box.style.width = boxWidth - 2.5 + "px";
+      box.style.height = boxHeight - 2.5 + "px";
       box.setAttribute("class", "box");
       container.appendChild(box);
     }
@@ -31,10 +30,23 @@ let functionCreateBox = (numberBox) => {
     container.style.height = boxHeight * numberBox + "px";
   }
 };
-input.addEventListener("change", () => {
-  console.log(input.value);
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  container.remove();
+  container = document.createElement("div");
+  container.setAttribute("id", "container");
+  body.appendChild(container);
+  if (input.value > 0 && input.value <= 100) {
     numberBox = input.value;
-    functionCreateBox(numberBox);
+  } else if (input.value > 100) {
+    let errorMsg = document.createElement("div");
+    errorMsg.textContent = 'Limit box is 100'
+    form.appendChild(errorMsg);
+    return;
+  }
+
+  functionCreateBox(numberBox);
 });
 form.appendChild(input);
 form.appendChild(button);
+input.focus()
