@@ -8,9 +8,18 @@ let form = document.createElement("form");
 body.insertBefore(form, container);
 
 let input = document.createElement("input");
+input.type = 'text'
+input.id = 'inputBox'
+
+let label = document.createElement('label');
+label.htmlFor = 'inputBox'
+label.textContent = 'How many boxs?'
+
 let button = document.createElement("button");
 button.textContent = "CREATE";
 
+
+//Create boxs
 let functionCreateBox = (numberBox) => {
   for (let i = 0; i < numberBox; i++) {
     for (let y = 0; y < numberBox; y++) {
@@ -30,6 +39,8 @@ let functionCreateBox = (numberBox) => {
     container.style.height = boxHeight * numberBox + "px";
   }
 };
+
+//How many boxs? 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   container.remove();
@@ -47,6 +58,7 @@ form.addEventListener("submit", (e) => {
 
   functionCreateBox(numberBox);
 });
+form.appendChild(label)
 form.appendChild(input);
 form.appendChild(button);
 input.focus()
